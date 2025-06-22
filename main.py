@@ -6,6 +6,7 @@ async def say_hello():# definimos la función asíncrona.
     await asyncio.sleep(1)# pausa de 1 segundo, pero puede continuar con otra tarea si la hay
     print('Ellis')
 
+# ----- CREACIÓN DE TAREAS ASÍNCRONAS
 async def task1():
     """Función asíncrona que espera 2s con 'await asyncio.sleep(2)' luego imprime un mensaje."""
     await asyncio.sleep(2)
@@ -16,6 +17,22 @@ async def task2():
     await asyncio.sleep(1)
     print('Tarea 2 terminada.')
 
+async def compute_square(x: int = 0, t: int = 1):
+    """
+    Calcula el cuadrado de un número de forma asíncrona tras una espera no bloqueante.
+
+    Esta función espera `t` segundos utilizando `await asyncio.sleep(t)` y luego retorna `x` elevado al cuadrado.
+
+    Args:
+        x (int): Número a elevar al cuadrado. Por defecto es 0.
+        t (int): Tiempo de espera en segundos antes de calcular. Por defecto es 1.
+
+    Returns:
+        int: El resultado de x ** 2.
+    """
+    await asyncio.sleep(t)
+    return x**2
+
 async def main():
     """Función que crea dos tareas asíncronas que se ejecutan al mismo tiempo (concurrencia)"""
     taskA = asyncio.create_task(task1())
@@ -24,9 +41,19 @@ async def main():
     await taskA
     await taskB
 
-
-
-
+    # ----- EJECUTAR TAREAS CONCURRENTES
+    results = await asyncio.gather( # lanza todas las tareas al mismo tiempo
+        compute_square(3),
+        compute_square(2, t=2),
+        compute_square(8, t=3),
+        compute_square(1, t=4),
+        compute_square(4, t=5),
+    )
+    print(results)
+    
+    
+    
+    
 
 
 
