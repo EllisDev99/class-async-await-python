@@ -33,6 +33,13 @@ async def compute_square(x: int = 0, t: int = 1):
     await asyncio.sleep(t)
     return x**2
 
+async def download_data(url: str) -> str:
+    print(f'Start downloading from {url}')
+    await asyncio.sleep(2) # simulamos el tiempo de espera
+    print(f'Finished downloading from {url}')
+    return f'Data from {url}'
+
+
 async def main():
     """Función que crea dos tareas asíncronas que se ejecutan al mismo tiempo (concurrencia)"""
     taskA = asyncio.create_task(task1())
@@ -47,10 +54,22 @@ async def main():
         compute_square(2, t=2),
         compute_square(8, t=3),
         compute_square(1, t=4),
-        compute_square(4, t=5),
-    )
+        compute_square(4, t=5)
+        )
     print(results)
     
+    # ------ EJEMPLO DE DESCARGA DE DATOS
+    urls = [
+        'http://example.com/1',
+        'http://example.com/2',
+        'http://example.com/3',
+        'http://example.com/4'
+        ]
+    task = [asyncio.create_task(download_data(url)) for url in urls]
+    results2 = await asyncio.gather(*task)
+    print('All downloads finished')
+    for result in results2:
+        print(result)    
     
     
     
