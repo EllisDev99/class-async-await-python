@@ -14,3 +14,7 @@ Creá una función descargar_archivo(nombre: str) que:
 """
 import asyncio
 from random import randint
+
+archivo_1 = "Can't Stop.mp4"
+archivo_2 = "Aerials.mp4"
+archivo_2 = "The Drug In Me Is You.mp4"
