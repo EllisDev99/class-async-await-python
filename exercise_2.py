@@ -12,3 +12,5 @@ Creá una función descargar_archivo(nombre: str) que:
 
     Al final, imprimí cuáles descargas salieron bien y cuáles fallaron.
 """
+import asyncio
+from random import randint
