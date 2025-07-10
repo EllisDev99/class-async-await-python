@@ -15,13 +15,30 @@ import asyncio
 from random import randint
 
 async def tic():
-    await asyncio.sleep(randint(0, 5))
-    print('TIC')
+    for i in range(1, 6):
+        await asyncio.sleep(randint(0, 5))
+        print('TIC')
+    return 'TIC FINISHED'
 
-async def tic():
-    await asyncio.sleep(randint(0, 5))
-    print('TIC')
-    
-async def tic():
-    await asyncio.sleep(randint(0, 5))
-    print('TIC')
+async def tac():
+    for i in range(1, 6):
+        await asyncio.sleep(randint(0, 5))
+        print('TAC')
+    return 'TAC FINISHED'
+
+async def toc():
+    for i in range(1, 6):
+        await asyncio.sleep(randint(0, 5))
+        print('TOC')
+    return 'TOC FINISHED'
+
+async def main():
+    task_tic = asyncio.create_task(tic())
+    task_tac = asyncio.create_task(tac())
+    task_toc = asyncio.create_task(toc())
+
+    result = await asyncio.gather(task_tic, task_tac, task_toc)
+
+
+
+asyncio.run(main())
