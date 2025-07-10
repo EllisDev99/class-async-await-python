@@ -14,3 +14,14 @@ Ideal para ver cómo se intercalan las salidas de consola. Bien musical 😏
 import asyncio
 from random import randint
 
+async def tic():
+    await asyncio.sleep(randint(0, 5))
+    print('TIC')
+
+async def tic():
+    await asyncio.sleep(randint(0, 5))
+    print('TIC')
+    
+async def tic():
+    await asyncio.sleep(randint(0, 5))
+    print('TIC')
