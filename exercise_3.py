@@ -11,3 +11,6 @@ Objetivo: Ver cómo se intercalan las corrutinas.
 
 Ideal para ver cómo se intercalan las salidas de consola. Bien musical 😏
 """
+import asyncio
+from random import randint
+
